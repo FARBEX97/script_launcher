@@ -14,13 +14,11 @@ class MainApplication(tk.Tk):
             "script_name": tk.StringVar(),
         }
 
-        # Barra de menú
+        # MenuBar
         menubar = MenuBar(self)
-        # menubar.add_command(label="Hello!")
-        # menubar.add_command(label="Quit!")
         self.config(menu=menubar)
 
-        # Configuración del marco y el grid.
+        # Grid config
         container = tk.Frame(self)
         container.pack(side="top", fill="both", expand=True)
         container.grid_rowconfigure(0, weight=1)

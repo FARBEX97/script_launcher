@@ -1,6 +1,6 @@
 import sys
 import tkinter as tk
-
+from popup.Popup import Popup
 
 class MenuBar(tk.Menu):
 
@@ -11,4 +11,7 @@ class MenuBar(tk.Menu):
         self.add_command(label="Exit", underline=1, command=self.quit)
 
     def quit(self):
-        sys.exit(0)
+        answer = Popup.ask_yes_no("Exit", "Are you sure you want to quit?")
+        
+        if answer:
+            sys.exit(0)

@@ -1,5 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
+
+from MenuBar import MenuBar
 from StartPage import StartPage
 from SecondPage import SecondPage
 
@@ -13,9 +15,9 @@ class MainApplication(tk.Tk):
         }
 
         # Barra de menú
-        menubar = tk.Menu(self)
-        menubar.add_command(label="Hello!")
-        menubar.add_command(label="Quit!")
+        menubar = MenuBar(self)
+        # menubar.add_command(label="Hello!")
+        # menubar.add_command(label="Quit!")
         self.config(menu=menubar)
 
         # Configuración del marco y el grid.

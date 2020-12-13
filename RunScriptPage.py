@@ -3,7 +3,7 @@ from tkinter import ttk
 
 LARGE_FONT= ("Oswald", 12)
 
-class SecondPage(ttk.Frame):
+class RunScriptPage(ttk.Frame):
 
     def __init__(self, parent, controller):
 

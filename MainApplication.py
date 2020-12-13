@@ -5,12 +5,13 @@ import json
 from MenuBar import MenuBar
 from MainFrame import MainFrame
 from StartPage import StartPage
-from SecondPage import SecondPage
+from RunScriptPage import RunScriptPage
 
 
 class MainApplication(tk.Tk):
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
+        self.title("ScriptLauncher by FARBEX97")
 
         self.shared_data = {
             "script_name": tk.StringVar(),
@@ -32,7 +33,7 @@ class MainApplication(tk.Tk):
 
         # Load all frames
         self.frames = {}
-        for F in (StartPage, SecondPage): 
+        for F in (StartPage, RunScriptPage): 
             frame = F(container, self)
             self.frames[F] = frame
             frame.grid(row = 0, column = 0, sticky ="nsew") 

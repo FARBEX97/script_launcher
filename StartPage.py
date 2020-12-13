@@ -32,7 +32,6 @@ class StartPage(ttk.Frame):
 
         def choose_script():
             controller.shared_data["script_name"] = combo.get()
-            # Transformar valor en página
             controller.show_frame(SecondPage)
 
         btn = ttk.Button(self, text="Run", command=choose_script)

@@ -2,7 +2,7 @@ import sys
 import json
 import webbrowser  
 import tkinter as tk
-from popup.Popup import Popup
+from pycofeece.Popup import Popup
 
 class MenuBar(tk.Menu):
 

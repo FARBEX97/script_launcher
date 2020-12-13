@@ -2,8 +2,8 @@ import tkinter as tk
 from tkinter import ttk
 import os
 from SecondPage import SecondPage
-from syswalker.SysWalker import SysWalker
-from popup.Popup import Popup
+from pycofeece.SysWalker import SysWalker
+from pycofeece.Popup import Popup
 
 LARGE_FONT= ("Oswald", 12)
 

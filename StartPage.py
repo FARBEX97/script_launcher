@@ -1,10 +1,11 @@
 import tkinter as tk
 from tkinter import ttk
 import os
-import glob
 from SecondPage import SecondPage
+from syswalker.SysWalker import SysWalker
+from popup.Popup import Popup
 
-LARGE_FONT= ("Verdana", 12)
+LARGE_FONT= ("Oswald", 12)
 
 class StartPage(ttk.Frame):
 
@@ -12,29 +13,27 @@ class StartPage(ttk.Frame):
 
 
         ttk.Frame.__init__(self, parent)
-        label = ttk.Label(self, text="Elige un script.", font=LARGE_FONT)
+        label = ttk.Label(self, text="Choose script.", font=LARGE_FONT)
         label.grid(row=0, column= 0, pady=10,padx=20)
 
 
         combo = ttk.Combobox(self, state="readonly")
-        def generar_lista_py():
-            """Generar lista con los archivos .xlsx de la carpeta."""
-            cwd = os.getcwd()
-            os.chdir(cwd+'\\scripts\\')
-            py_files = []
-            for file in glob.glob("*.py"):
-                file = file.replace('.py','')
-                py_files.append(file)
-            os.chdir(cwd)
-            return py_files
-        combovalues = generar_lista_py()
+        def make_py_list():
+            """Generate .py files list"""
+            try:
+                src_dir = controller.shared_data["src_dir"]
+                return SysWalker.list_files_by_type(src_dir,".py")
+            except FileNotFoundError:
+                return list()
+
+        combovalues = make_py_list()
         combo["values"] = combovalues
         combo.grid(row=0, column= 1)
 
-        def elegir_script():
+        def choose_script():
             controller.shared_data["script_name"] = combo.get()
             # Transformar valor en página
             controller.show_frame(SecondPage)
 
-        btn = ttk.Button(self, text='Aceptar', command=elegir_script)
+        btn = ttk.Button(self, text="Run", command=choose_script)
         btn.grid(row=0, column=2, pady=10,padx=20)

@@ -1,7 +1,9 @@
 import tkinter as tk
 from tkinter import ttk
+import json
 
 from MenuBar import MenuBar
+from MainFrame import MainFrame
 from StartPage import StartPage
 from SecondPage import SecondPage
 
@@ -12,26 +14,23 @@ class MainApplication(tk.Tk):
 
         self.shared_data = {
             "script_name": tk.StringVar(),
+            "src_dir": json.load(open("config.json"))["src_dir"]
         }
 
         # MenuBar
         menubar = MenuBar(self)
         self.config(menu=menubar)
 
-        # Grid config
-        container = tk.Frame(self)
-        container.pack(side="top", fill="both", expand=True)
-        container.grid_rowconfigure(0, weight=1)
-        container.grid_columnconfigure(0, weight=1)
+        # MainFrame config
+        container = MainFrame(self)
         self.geometry("500x200")
 
-        # Estilo general de las ventanas.
-        # Paleta de colores (de más oscuro a más claro): #343d46 #4f5b66 #65737e #a7adba #c0c5ce
+        # Window style config
         s = ttk.Style()
-        s.configure('.', background='#c0c5ce')
-        s.configure('TButton', background='#343d46')
+        s.configure(".", background="#c0c5ce")
+        s.configure("TButton", background="#343d46")
 
-        # Carga todas las ventanas.
+        # Load all frames
         self.frames = {}
         for F in (StartPage, SecondPage): 
             frame = F(container, self)

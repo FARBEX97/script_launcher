@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 
-LARGE_FONT= ("Verdana", 12)
+LARGE_FONT= ("Oswald", 12)
 
 class SecondPage(ttk.Frame):
 
@@ -9,12 +9,12 @@ class SecondPage(ttk.Frame):
 
 
         ttk.Frame.__init__(self, parent)
-        label = ttk.Label(self, text="Nombre del script", font=LARGE_FONT)
+        label = ttk.Label(self, text="Script Name", font=LARGE_FONT)
         label.pack(pady=10,padx=10)
 
         def exec_script(script_name):
             print(script_name)
             exec(open(f".\\scripts\\{script_name}.py").read())
             
-        btn = ttk.Button(self, text='Ejecutar Script',command= lambda: exec_script(controller.shared_data["script_name"]))
+        btn = ttk.Button(self, text="Run script",command= lambda: exec_script(controller.shared_data["script_name"]))
         btn.pack(pady=10,padx=10)

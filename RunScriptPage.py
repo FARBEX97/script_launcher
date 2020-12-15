@@ -1,3 +1,4 @@
+import os
 import tkinter as tk
 from tkinter import ttk
 
@@ -13,8 +14,8 @@ class RunScriptPage(ttk.Frame):
         label.pack(pady=10,padx=10)
 
         def exec_script(script_name):
-            print(script_name)
-            exec(open(f".\\scripts\\{script_name}.py").read())
+            src_dir = controller.shared_data["src_dir"]
+            exec(open(f"{src_dir}{os.sep}{script_name}.py").read())
             
         btn = ttk.Button(self, text="Run script",command= lambda: exec_script(controller.shared_data["script_name"]))
         btn.pack(pady=10,padx=10)

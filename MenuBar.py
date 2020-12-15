@@ -2,7 +2,9 @@ import sys
 import json
 import webbrowser  
 import tkinter as tk
-from pycofeece.Popup import Popup
+
+import coffeece
+from coffeece.Popup import Popup
 
 class MenuBar(tk.Menu):
 
@@ -29,6 +31,7 @@ class MenuBar(tk.Menu):
         # Restart App
         self.parent.destroy()
         self.parent.__init__()
+
 
 
     def about(self):

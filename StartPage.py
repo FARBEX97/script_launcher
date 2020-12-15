@@ -28,8 +28,13 @@ class StartPage(ttk.Frame):
             except FileNotFoundError:
                 return list()
 
-        combovalues = make_py_list()
+        try:
+            combovalues = make_py_list()
+        except OSError:
+            combovalues = list()
+            
         combo["values"] = combovalues
+
         combo.grid(row=0, column= 1)
 
         def choose_script():
